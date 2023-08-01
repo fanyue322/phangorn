@@ -59,7 +59,7 @@ maxCladeCred <- function(x, tree = TRUE, part = NULL, rooted = TRUE) {
   if (inherits(x, "phylo")) x <- c(x)
   if (is.null(part)) {
     if (!rooted) {
-      pp <- unroot(x) |> prop.part()
+      pp <- unroot(x) %>% prop.part()
     } else {
       pp <- prop.part(x)
     }
