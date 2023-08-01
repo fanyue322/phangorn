@@ -1,6 +1,6 @@
 edge_length_matrix <- function(tree, trees, rooted=TRUE){
   if(!inherits(trees, "multiPhylo")) stop("Trees must be of class multiPhylo!")
-  trees <- .uncompressTipLabel(trees) |> .compressTipLabel(ref=tree$tip.label)
+  trees <- .uncompressTipLabel(trees) %>% .compressTipLabel(ref=tree$tip.label)
   if(!rooted){
     trees <- unroot(trees)
     tree <- unroot(tree)
@@ -50,7 +50,7 @@ edge_length_matrix <- function(tree, trees, rooted=TRUE){
 ##' set.seed(123)
 ##' bs <- bootstrap.phyDat(Laurasiatherian,
 ##'                 FUN=function(x)upgma(dist.ml(x)), bs=100)
-##' tree_compat <- allCompat(bs, rooted=TRUE) |>
+##' tree_compat <- allCompat(bs, rooted=TRUE) %>%
 ##'               add_edge_length(bs)
 ##' plot(tree_compat)
 ##' add_boxplot(tree_compat, bs, boxwex=.7)
