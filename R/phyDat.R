@@ -72,8 +72,8 @@
 #' subset(y, 1:2)
 #' subset(y, 1:2, compress=TRUE)
 #'
-#' subset(y, select=1:3, site.pattern = FALSE) |> as.character()
-#' subset(y, select=1:3, site.pattern = TRUE) |> as.character()
+#' subset(y, select=1:3, site.pattern = FALSE) %>% as.character()
+#' subset(y, select=1:3, site.pattern = TRUE) %>% as.character()
 #' y[,1:3] # same as subset(y, select=1:3, site.pattern = FALSE)
 #'
 #' # Compute all possible site patterns
@@ -169,7 +169,7 @@ rbind.phyDat <- function(...){
   l <- sapply(x, function(x)sum(attr(x, "weight")))
   if(any(l!=l[1]))stop("Alignments have different # of characters!")
   if(any(types!=types[1]))stop("Alignments must have same type!")
-  nam <- lapply(x, names) |> unlist()
+  nam <- lapply(x, names) %>% unlist()
   if(any(duplicated(nam)))stop("Duplicated names!")
   m <- lengths(x)
   mcs <- c(0, cumsum(m))
