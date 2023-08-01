@@ -2,7 +2,7 @@ support <- function(tree, trees, method="FBP", tol=1e-8, scale=TRUE){
   trees <- keep.tip(trees, tree$tip.label)
   method <- match.arg(method, c("FBP", "TBE", "MCC"))
   tip2root <- ifelse(method=="MCC", TRUE, FALSE)
-  if(all(sapply(trees, \(x)!is.null(x$edge.length)))){
+  if(all(sapply(trees, function(x)!is.null(x$edge.length)))){
     trees <- di2multi(trees, tol=tol) # , tip2root=tip2root)
   }
   if(method=="FBP" || method=="MCC"){
