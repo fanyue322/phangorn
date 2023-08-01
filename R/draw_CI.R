@@ -58,7 +58,7 @@ edge_length_matrix <- function(tree, trees, rooted=TRUE){
 ##' \code{\link{maxCladeCred}}, \code{\link{add_boxplot}}
 ##' @keywords aplot
 ##' @export
-add_edge_length <- function(tree, trees, fun=\(x)median(na.omit(x)),
+add_edge_length <- function(tree, trees, fun=function(x)median(na.omit(x)),
                             rooted=all(is.rooted(trees))){
   if(!rooted) tree <- unroot(tree)
   X <- edge_length_matrix(tree, trees, rooted)
