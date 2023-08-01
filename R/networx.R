@@ -352,7 +352,7 @@ as.networx.splits <- function(x, planar = FALSE, coord = "none", ...) {
   if (!is.null(attr(x, "cycle"))) {
     c.ord <- attr(x, "cycle")
   }
-  else c.ord <- cophenetic(x) |> getOrderingNN()
+  else c.ord <- cophenetic(x) %>% getOrderingNN()
 
   attr(x, "cycle") <- c.ord
   # check for star tree
@@ -464,7 +464,7 @@ spl2angle <- function(x) {
   if (!is.null(attr(x, "cycle"))) ord <- attr(x, "cycle")
   x <- changeOrder(x, attr(x, "labels")[ord])
   y <- lapply(x, function(x, l) (x - 1) / l * 360, l = l)
-  angle <- vapply(y, circ.mean, 0) |> deg2rad()
+  angle <- vapply(y, circ.mean, 0) %>% deg2rad()
   # angle <- ((vapply(x, sum, 0) / lengths(x) - 1) / l ) * 2*pi
   # kreis2kart(attr(x, "weight"), angle)
   angle
