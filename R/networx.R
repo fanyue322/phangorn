@@ -89,7 +89,7 @@ addEdge <- function(network, desc, spl) {
   ind <- NULL
   for (i in 2:length(fromTo)) {
     d <- all_shortest_paths(g, fromTo[i - 1], fromTo[i])$res
-    sptmp <- unlist( lapply(d, \(d) E(g, path=d)) )
+    sptmp <- unlist( lapply(d, function(d) E(g, path=d)) )
     ind <- c(ind, sptmp) # [-c(1, length(sptmp))])
   }
   ind <- unique(ind)
